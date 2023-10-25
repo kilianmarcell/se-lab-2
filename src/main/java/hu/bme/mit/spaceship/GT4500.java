@@ -36,6 +36,39 @@ public class GT4500 implements SpaceShip {
   * 			- If the fired store reports a failure, the ship does not try to fire the other one.
   * 	ALL:	tries to fire both of the torpedo stores.
   *
+  Tesztelt követelmény	a GT4500 torpedóival lehet tüzelni
+Előfeltételek (kiindulási állapot)	van legalább 1 torpedó a hajóban
+A teszt lépései	tüzelünk egy torpedót (pl. TORPEDO,SINGLE)
+Elvárt kimenet/eredmény	a második parancs eredménye SUCCESS
+	
+Tesztelt követelmény	a GT4500 torpedó először a "primary" készletből tüzel
+Előfeltételek (kiindulási állapot)	van legalább 1 torpedó a hajóban
+A teszt lépései	először tüzelünk egy hajóval SINGLE tüzeléssel (TORPEDO,SINGLE)
+Elvárt kimenet/eredmény	a parancs eredménye SUCCESS
+	
+Tesztelt követelmény	két egymást követő single lövésnél más-más store-okból lő
+Előfeltételek (kiindulási állapot)	legyen legalább 1 torpedó a hajón
+A teszt lépései	kérszer egymás után tüzelünk egy torpedót SINGLE tüzeléssel
+Elvárt kimenet/eredmény	a parancs eredménye két darab SUCCESS
+	
+Tesztelt követelmény	ha az egyik store kifogy egy SINGLE lövés után, a másik store-ból tüzel a torpedó
+Előfeltételek (kiindulási állapot)	van legalább 1 torpedó a hajón, aminek az egyik store-ja üres
+A teszt lépései	tüzelünk egyet a torpedóval, SINGLE tüzeléssel
+Elvárt kimenet/eredmény	a parancs eredménye SUCCESS
+	
+Tesztelt követelmény	ha sikertelen a tüzelés egy torpedóval SINGLE tüzelés esetén, nem próbál újra tüzelni a torpedó
+Előfeltételek (kiindulási állapot)	legalább 1 torpedó a hajón, aminek minden store-ja üres
+A teszt lépései	tüzelünk egyet a torpedóval, SINGLE tüzeléssel
+Elvárt kimenet/eredmény	a parancs eredménye FAIL
+	
+Tesztelt követelmény	mintkét löveggel lehet tüzelni
+Előfeltételek (kiindulási állapot)	legyen legalább 1 torpedó a hajón, aminek van mind a két store-jában löveg
+A teszt lépései	tüzelünk egyet a torpedóval ALL tüzeléssel
+Elvárt kimenet/eredmény	a parancs eredménye SUCCESS
+
+
+
+
   * @return whether at least one torpedo was fired successfully
   */
   @Override
